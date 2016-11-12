@@ -4,6 +4,7 @@ import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
+import { AccountPage } from '../pages/account/account';
 import { TabsPage } from '../pages/tabs/tabs';
 
 @NgModule({
@@ -11,6 +12,7 @@ import { TabsPage } from '../pages/tabs/tabs';
     MyApp,
     AboutPage,
     ContactPage,
+    AccountPage,
     HomePage,
     TabsPage
   ],
@@ -22,6 +24,7 @@ import { TabsPage } from '../pages/tabs/tabs';
     MyApp,
     AboutPage,
     ContactPage,
+    AccountPage,
     HomePage,
     TabsPage
   ],

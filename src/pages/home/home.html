@@ -1,22 +1,31 @@
 <ion-header>
   <ion-navbar>
-     <ion-buttons start>
+    <!--<ion-buttons start>
       <button ion-button (click)="openMenu()">
         <ion-icon name="contact"></ion-icon>
       </button>
-    </ion-buttons>
+    </ion-buttons>-->
     <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
+  <ion-slides #mySlider [options]="mySlideOptions">
+    <ion-slide>
+      <h1>Slide 1</h1>
+    </ion-slide>
+    <ion-slide>
+      <h1>Slide 2</h1>
+    </ion-slide>
+    <ion-slide>
+      <h1>Slide 3</h1>
+    </ion-slide>
+  </ion-slides>
+  <h2>Welcome to {{title}}!</h2>
   <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
+    This starter project comes with simple tabs-based layout for apps that are going to primarily use a Tabbed UI.
   </p>
   <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
+    Take a look at the <code>src/pages/</code> directory to add or change tabs, update any existing page or create new pages.
   </p>
 </ion-content>
