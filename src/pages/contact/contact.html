@@ -37,6 +37,37 @@
     </div>
     <div class="earth_bg"></div>
 </div>
-
+ <div padding [@flyInBottomFast]="cloudState" id="cloud-layer">
  
+    <ion-row>
+      <ion-col>
+        <!--<img [@flyInBottomSlow]="logoState" src="assets/images/joshuamorony.png" />-->
+      </ion-col>
+    </ion-row>
+ 
+    <ion-row>
+      <ion-col>
+        <ion-list inset [@bounceInBottom]="formState">
+ 
+          <ion-item>
+            <ion-label>姓名:</ion-label>
+            <ion-input type="text"  placeholder="输入姓名"></ion-input>
+          </ion-item>
+ 
+          <ion-item>
+            <ion-label floating>意见回馈:</ion-label>
+            <ion-textarea  rows="6" [(ngModel)]="msg"></ion-textarea>
+          </ion-item>
+ 
+        </ion-list>
+      </ion-col>
+    </ion-row>
+ 
+    <ion-row>
+      <ion-col >
+        <button ion-button class="login-button" [@fadeIn]="loginState">提交</button>
+      </ion-col>
+    </ion-row>
+ 
+  </div>
 </ion-content>
