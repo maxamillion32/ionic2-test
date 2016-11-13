@@ -1,3 +1,9 @@
+ /*
+* create on 2016/11/12   
+*    活动
+*
+*
+*/ 
 import { Component, trigger, state, style, transition, animate, keyframes } from '@angular/core';
 import { NavController } from 'ionic-angular';
 

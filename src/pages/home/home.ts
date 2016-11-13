@@ -1,3 +1,9 @@
+/*
+* create on 2016/11/12   
+*    首页
+*
+*
+*/
 import { Component,ViewChild  } from '@angular/core';
 
 import { NavController,Slides  } from 'ionic-angular';
@@ -9,7 +15,7 @@ import { NavController,Slides  } from 'ionic-angular';
 export class HomePage {
   @ViewChild('mySlider') slider: Slides;
   title: string;
-  mySlider = {
+  mySlideOptions = {
     initialSlide: 1,
     loop: true
   };
