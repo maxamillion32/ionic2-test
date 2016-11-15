@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header page-home>
   <ion-navbar>
      <ion-buttons start>
       <button ion-button (click)="search()">
@@ -7,9 +7,9 @@
     </ion-buttons> 
     <ion-title>首页</ion-title>
   </ion-navbar>
-</ion-header>
-
+</ion-header> 
 <ion-content padding>
+ <section> 
   <ion-slides #mySlider [options]="mySlideOptions">
     <ion-slide>
       <h1>Slide 1</h1>
@@ -21,11 +21,9 @@
       <h1>Slide 3</h1>
     </ion-slide>
   </ion-slides>
-  <h2>Welcome to {{title}}!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs, update any existing page or create new pages.
-  </p>
+ </section>
+ <section>
+
+   
+ </section>
 </ion-content>
