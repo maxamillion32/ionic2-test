@@ -4,8 +4,7 @@
 *
 *
 */
-import { Component,ViewChild  } from '@angular/core';
-
+import { Component,ViewChild  } from '@angular/core'; 
 import { NavController,Slides  } from 'ionic-angular';
 
 @Component({
@@ -16,13 +15,16 @@ export class HomePage {
   @ViewChild('mySlider') slider: Slides;
   title: string;
   mySlideOptions = {
-    initialSlide: 1,
+    initialSlide: 0,
     loop: true
   };
-
+ 
   constructor(public navCtrl: NavController) {
-     this.title = 'APP';
+      this.title = 'APP';
+     
   }
-  
-
+   
+  select(day){
+    
+  }
 }

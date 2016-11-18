@@ -21,8 +21,5 @@ export class AccountPage {
       this.view = view;
       console.log(this.view);
   } 
- login() {  
-    this.navCtrl.push(LoginPage);
- }
 
 }

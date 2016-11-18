@@ -10,10 +10,11 @@ import { CalendarPage } from '../pages/calendar/calendar';
 import { LoginPage } from '../pages/login/login';
 
 
-import { CalendarComponent } from '../directive/calendar/calendar';
+import { Ionic2Calendar } from '../directive/calendar/calendar';
 @NgModule({
   declarations: [
     MyApp,
+    Ionic2Calendar,
     CalendarPage,
     LoginPage,
     AboutPage,
@@ -41,6 +42,6 @@ import { CalendarComponent } from '../directive/calendar/calendar';
     HomePage,
     TabsPage
   ],
-  providers: [CalendarComponent]
+  providers: [Ionic2Calendar]
 })
 export class AppModule {}

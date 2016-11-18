@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
+ 
 /*
   Generated class for the CalendarPage page.
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
@@ -9,7 +9,7 @@ import { NavController } from 'ionic-angular';
 @Component({
   selector: 'page-calendar',
   templateUrl: 'calendar.html'
-  //directives: [CalendarComponent]
+  
 })
 export class CalendarPage {
   month: Array<number>;
