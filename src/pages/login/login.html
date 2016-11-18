@@ -1,9 +1,16 @@
-<ion-navbar *navbar>
+<!--<ion-navbar *navbar>
   <ion-title>用户登录</ion-title>
-</ion-navbar>
+</ion-navbar>-->
+<ion-header page-login>
+  <ion-navbar>
+    <ion-title>
+      用户登录
+    </ion-title>
+  </ion-navbar>
+</ion-header> 
 <ion-content>
   <ion-list>
-    <ion-item (click)="login()">
+    <ion-item>
       <ion-row text-center>
         <ion-col>
           <img src="img/person.png" class="avatar">
@@ -36,7 +43,7 @@
     </ion-list-header>
     <ion-item>
       当前版本
-      <ion-note item-right>{{versionNumber}}</ion-note>
+      <ion-note item-right></ion-note>
     </ion-item>
     <ion-item>
       联系作者

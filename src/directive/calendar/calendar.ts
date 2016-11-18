@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IONIC_DIRECTIVES } from 'ionic-angular';
+//import { IONIC_DIRECTIVES } from 'ionic-angular';
 /*
   Calendar Component 
 */
@@ -73,9 +73,9 @@ import { IONIC_DIRECTIVES } from 'ionic-angular';
           color: #BCC2C6;
       } 
   `],
-  //directives: [IONIC_DIRECTIVES]
+  // directives: [IONIC_DIRECTIVES]
 })
-export class CalendarComponent {
+export class CalendarComponent {//
   month: Array<number>;
   current: Date;
   today: Date;

@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { NavController, IONIC_DIRECTIVES } from 'ionic-angular';
-import { CalendarComponent } from '../../directive/calendar/calendar';
+import { NavController } from 'ionic-angular';
+
 /*
   Generated class for the CalendarPage page.
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
 @Component({
-  templateUrl: 'build/pages/calendar/calendar.html',
+  selector: 'page-calendar',
+  templateUrl: 'calendar.html'
   //directives: [CalendarComponent]
 })
 export class CalendarPage {

@@ -5,11 +5,17 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { AccountPage } from '../pages/account/account';
-import { TabsPage } from '../pages/tabs/tabs';
+import { TabsPage } from '../pages/tabs/tabs'; 
+import { CalendarPage } from '../pages/calendar/calendar';
+import { LoginPage } from '../pages/login/login';
 
+
+import { CalendarComponent } from '../directive/calendar/calendar';
 @NgModule({
   declarations: [
     MyApp,
+    CalendarPage,
+    LoginPage,
     AboutPage,
     ContactPage,
     AccountPage,
@@ -17,17 +23,24 @@ import { TabsPage } from '../pages/tabs/tabs';
     TabsPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp,{
+      tabsHideOnSubPages: true,
+      mode: 'ios',
+      backButtonText:'' 
+      // pageTransition: 'md-transition'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    CalendarPage,
+    LoginPage,
     AboutPage,
     ContactPage,
     AccountPage,
     HomePage,
     TabsPage
   ],
-  providers: []
+  providers: [CalendarComponent]
 })
 export class AppModule {}
