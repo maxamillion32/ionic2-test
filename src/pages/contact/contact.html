@@ -51,9 +51,9 @@
  
           <ion-item>
             <ion-label>姓名:</ion-label>
-            <ion-input type="text"  placeholder="输入姓名"></ion-input>
+            <ion-input type="text"  placeholder="输入姓名"  [(ngModel)]="name"></ion-input>
           </ion-item>
- 
+         
           <ion-item>
             <ion-label floating>意见回馈:</ion-label>
             <ion-textarea  rows="6" [(ngModel)]="msg"></ion-textarea>
@@ -65,7 +65,7 @@
  
     <ion-row>
       <ion-col >
-        <button ion-button class="login-button" [@fadeIn]="loginState">提交</button>
+        <button ion-button class="login-button" [@fadeIn]="loginState" (click)="sumbit()">提交</button>
       </ion-col>
     </ion-row>
  

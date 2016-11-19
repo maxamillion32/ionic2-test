@@ -6,7 +6,7 @@
 */
 import { Component,ViewChild  } from '@angular/core'; 
 import { NavController,Slides  } from 'ionic-angular';
-
+import { SearchPage } from '../search/search';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -23,8 +23,7 @@ export class HomePage {
       this.title = 'APP';
      
   }
-   
-  select(day){
-    
-  }
+ search(){
+   this.navCtrl.push(SearchPage);
+ }
 }

@@ -4,9 +4,21 @@
      活动
     </ion-title>
   </ion-navbar>
+  <ion-toolbar>
+        <section>
+        <ionic2-calendar [events]="data"></ionic2-calendar> 
+        </section>
+  </ion-toolbar>
 </ion-header> 
 <ion-content > 
+  <ion-list>
+   <ion-item *ngFor="let i of items">{{i}}</ion-item>
+ </ion-list>
 
+ <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+   <ion-infinite-scroll-content></ion-infinite-scroll-content>
+ </ion-infinite-scroll>
+  <!--<section>
   <button [@flip]="flipState" ion-button color="light" (click)="toggleFlip()">Flip!</button>
  
   <button [@flyInOut]="flyInOutState" ion-button color="light" (click)="toggleFlyInOut()">Fly Out!</button>
@@ -14,4 +26,5 @@
   <button [@fade]="fadeState" ion-button color="light" (click)="toggleFade()">Fade!</button>
  
   <button [@bounce]="bounceState" ion-button color="light" (click)="toggleBounce()">Bounce!</button>
+  </section>-->
 </ion-content>

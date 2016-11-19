@@ -62,14 +62,16 @@ import { NavController} from 'ionic-angular';
   ]
 })
 export class ContactPage {
-   logoState: any = "in";
+  logoState: any = "in";
   cloudState: any = "in";
   loginState: any = "in";
   formState: any = "in";
-  msg: string;
+  name: string;
   constructor(public navCtrl: NavController) {
       
   }
-
-
+  sumbit(){
+     console.log("value: "+this.name);
+  }
+  
 }

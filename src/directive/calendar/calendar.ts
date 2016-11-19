@@ -11,10 +11,10 @@ import { Component, Input } from '@angular/core';
                 </ion-col>
             </ion-row>
             <ion-row class="calendar-row" *ngFor="let week of month; let i = index;">
-                <ion-col class="center calendar-col" width-14 *ngFor="let day of week"
+                <ion-col class="center calendar-col" width-14 *ngFor="let day of week" 
                     [class.today]="isToday(day)" 
                     [class.diff-month]="diffMonth(day)"
-                    (click)="select(day)">
+                    (click)="selectDay(day)">
                     {{ toDate(day) }}
                 </ion-col>
             </ion-row>
@@ -65,7 +65,7 @@ import { Component, Input } from '@angular/core';
       .today {
           background-color: #E89F9D;
           color: #FFFFFF;
-      } 
+      }  
       .diff-month {
           background-color: #E1E1E1;
           color: #BCC2C6;
@@ -85,8 +85,8 @@ export class Ionic2Calendar {
     wHeadMed: string[] = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
     previousDay: any;
     selectedDay: any;
-    constructor() {
-        console.log('CalendarComponent');
+    isSelected: boolean = false;
+    constructor() {  
         this.today = new Date();
         this.current = new Date();
         this.current.setTime(this.today.getTime());
@@ -204,10 +204,7 @@ export class Ionic2Calendar {
         this.current.setTime(next.getTime());
         this.monthRender(this.current.toISOString());
     }
-   select(day: any) {
-       console.log(this.toDate(day));
-       return this.toDate(day);
-   }
+   
     selectDay(day: any) {
         
         day.selected = true;
