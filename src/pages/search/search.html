@@ -1,18 +1,31 @@
-<ion-header page-home no-shadow>
+<ion-header page-search no-shadow>
     <ion-navbar hideBackButton>
-        <ion-buttons>
-            <ion-searchbar [(ngModel)]="myInput"  placeholder="{{placeHolder}}" [showCancelButton]="shouldShowCancel" [cancelButtonText]="cancelButtonText" (ionInput)="getItems($event)"  (ionCancel)="onCancel($event)">
+        <ion-buttons  no-border-bottom>
+            <ion-searchbar  color="primary" autofocus [(ngModel)]="myInput" 
+            type="search" 
+            #searchInput
+            placeholder="{{placeHolder}}" 
+            [showCancelButton]="shouldShowCancel" 
+            [cancelButtonText]="cancelButtonText" 
+            [autocomplete] ="on"
+            (ionInput)="getItems($event)"  
+            (ionCancel)="onCancel($event)"
+            (ionBlur)="inputBlurred($event)" 
+            (ionFocus)="inputFocused($event)" 
+            (ionClear)="onClearSearchbar($event)">
             </ion-searchbar>
         </ion-buttons>
     </ion-navbar>
 </ion-header>
 <ion-content padding> 
     <section>
+        
         <ion-list>
-            <ion-item *ngFor="let item of items">
-                {{ item }}
-            </ion-item>
+            <ion-list-header>
+                Action
+            </ion-list-header>
+            <ion-item *ngFor="let item of items">  {{ item }}</ion-item>
+            
         </ion-list>
-
     </section>
 </ion-content>

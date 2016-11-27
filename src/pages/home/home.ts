@@ -5,7 +5,7 @@
 *
 */
 import { Component,ViewChild  } from '@angular/core'; 
-import { NavController,Slides  } from 'ionic-angular';
+import { ViewController,NavController,Slides ,MenuController ,LoadingController} from 'ionic-angular';
 import { SearchPage } from '../search/search';
 @Component({
   selector: 'page-home',
@@ -18,12 +18,27 @@ export class HomePage {
     initialSlide: 0,
     loop: true
   };
- 
-  constructor(public navCtrl: NavController) {
+  
+  constructor(public viewCtrl: ViewController,public navCtrl: NavController,public menuCtrl: MenuController,public loading:LoadingController) {
       this.title = 'APP';
+      this.viewCtrl = viewCtrl;
      
   }
+  
  search(){
    this.navCtrl.push(SearchPage);
  }
+ 
+openMenu() {
+   this.menuCtrl.open();
+ }
+
+ closeMenu() {
+   this.menuCtrl.close();
+ }
+
+ toggleMenu() {
+   this.menuCtrl.toggle();
+ }
+ 
 }

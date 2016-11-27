@@ -19,7 +19,7 @@ export class AccountPage {
   }
   constructor(public navCtrl: NavController,public view: ViewController) {
       this.view = view;
-      console.log(this.view);
+      
   } 
 
 }

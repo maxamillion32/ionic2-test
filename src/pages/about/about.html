@@ -12,7 +12,12 @@
 </ion-header> 
 <ion-content > 
   <ion-list>
-   <ion-item *ngFor="let i of items">{{i}}</ion-item>
+   <!--<ion-item *ngFor="let i of items">{{i}}</ion-item>-->
+ <ion-item *ngFor="let i of items">
+  <ion-icon name="logo-twitter" item-left></ion-icon>
+  Followers
+  <ion-badge item-right>260k</ion-badge>
+</ion-item>
  </ion-list>
 
  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">

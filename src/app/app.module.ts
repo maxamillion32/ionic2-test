@@ -27,10 +27,24 @@ import { InputFieldComponent } from '../directive/forms/inputfield/inputfield.co
     TabsPage
   ],
   imports: [
+  //    IonicModule.forRoot(MyApp,{
+  //   menuType: 'push',
+  //   platforms: {
+  //     ios: {
+  //       menuType: 'overlay',
+  //     }
+  //   }
+  // })
     IonicModule.forRoot(MyApp, {
+      menuType: 'push',
       tabsHideOnSubPages: true,
       mode: 'ios',
-      backButtonText: ''
+      backButtonText: '',
+      platforms: {
+      ios: {
+              menuType: 'reveal',
+            }
+          }
       // pageTransition: 'md-transition'
     })
   ],
