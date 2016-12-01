@@ -2,7 +2,7 @@
   "name": "ionic-app-base",
   "author": "Ionic Framework",
   "homepage": "http://ionicframework.com/",
-  "private": true,
+  "private": true, 
   "scripts": {
     "build": "ionic-app-scripts build",
     "watch": "ionic-app-scripts watch",
@@ -10,7 +10,10 @@
     "emulate:before": "build",
     "deploy:before": "build",
     "build:before": "build",
-    "run:before": "build"
+    "run:before": "build",
+    "ionic:build": "ionic-app-scripts build",
+    "ionic:serve": "ionic-app-scripts serve",
+    "minify": "ionic-app-scripts minify"
   },
   "dependencies": {
     "@angular/common": "2.0.0",

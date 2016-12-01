@@ -1,3 +1,25 @@
 page-account {
+  .home {
+        height: 100%;
+        ion-tabs > ion-navbar-section, ion-tabs > ion-content-section {
+            display:none;
+        }
+        ion-slides {
+            height: calc(100% - 48px);
+            margin-top: 48px;
+        }
 
+        .cannot-go-left {
+            transform: translate3d(0px, 0px, 0px) !important;
+        }
+        .cannot-go-right {
+            transform: translate3d(-200vw, 0px, 0px) !important;
+        }
+        .swiper-slide {
+            .slide-zoom {
+            text-align:left;
+            }
+            align-items: baseline;
+        }
+        }
 }

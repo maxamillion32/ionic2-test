@@ -10,7 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
               <ion-header> 
                 <ion-navbar>
                   <ion-buttons start>
-                    <button ion-button>
+                    <button ion-button icon-only >
                       <ion-icon name="contact"></ion-icon>
                     </button>
                   </ion-buttons>
@@ -31,31 +31,31 @@ import { TabsPage } from '../pages/tabs/tabs';
                 </ion-list>
                 <ion-list>
                     <ion-item>
-                      <ion-icon name="leaf" item-left></ion-icon>
-                        Herbology
-                      <ion-icon name="rose" item-right></ion-icon>
+                      <ion-icon name="ios-mail-outline" item-left></ion-icon>
+                        消息 
+                        <ion-badge color="secondary">1</ion-badge>
                     </ion-item>
                     <ion-item>
-                      <ion-icon name="leaf" item-left></ion-icon>
-                        Herbology
-                      <ion-icon name="rose" item-right></ion-icon>
+                      <ion-icon name="ios-bookmark-outline" item-left></ion-icon>
+                        收藏
+                       <ion-badge color="secondary">11</ion-badge>
                     </ion-item>
                     <ion-item>
-                      <ion-icon name="leaf" item-left></ion-icon>
-                        Herbology
-                      <ion-icon name="rose" item-right></ion-icon>
+                      <ion-icon name="ios-chatbubbles-outline" item-left></ion-icon>
+                        话题
+                      <ion-badge color="secondary">5</ion-badge>
                     </ion-item>
                   </ion-list>
                    <ion-list>
                     <ion-item>
-                      <ion-icon name="leaf" item-left></ion-icon>
-                        login
-                      <ion-icon name="rose" item-right></ion-icon>
+                      <ion-icon name="ios-contact-outline" item-left></ion-icon>
+                        登陆
+                       
                     </ion-item>
                     <ion-item>
-                      <ion-icon name="leaf" item-left></ion-icon>
-                       sigin
-                      <ion-icon name="rose" item-right></ion-icon>
+                      <ion-icon name="ios-contacts-outline" item-left></ion-icon>
+                       注册
+                      
                     </ion-item>
                     
                   </ion-list>

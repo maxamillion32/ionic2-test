@@ -18,8 +18,9 @@ export class HomePage {
     initialSlide: 0,
     loop: true
   };
-
+  placeHolder: string = '搜索关键词';
   private items: any;
+  icons: string = 'camera';
   constructor(public viewCtrl: ViewController, public navCtrl: NavController, public menuCtrl: MenuController, public loading: LoadingController) {
     this.title = 'APP';
 

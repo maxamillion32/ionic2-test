@@ -7,7 +7,6 @@
             placeholder="{{placeHolder}}" 
             [showCancelButton]="shouldShowCancel" 
             [cancelButtonText]="cancelButtonText" 
-            [autocomplete] ="on"
             (ionInput)="getItems($event)"  
             (ionCancel)="onCancel($event)"
             (ionBlur)="inputBlurred($event)" 

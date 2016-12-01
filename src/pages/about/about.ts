@@ -10,8 +10,7 @@ import { NavController } from 'ionic-angular';
 @Component({
   selector: 'page-about',
   templateUrl: 'about.html',
-  animations: [
-
+  animations: [ 
     trigger('flip', [
       state('flipped', style({
         transform: 'rotate(180deg)',
@@ -61,7 +60,7 @@ export class AboutPage {
   flyInOutState: String = 'in';
   fadeState: String = 'visible';
   bounceState: String = 'noBounce';
-  items = [];
+  items: any = [];
   data: any = [];
   constructor(public navCtrl: NavController) {
     for (var i = 0; i < 30; i++) {

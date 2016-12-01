@@ -10,6 +10,7 @@ import { CalendarPage } from '../pages/calendar/calendar';
 import { LoginPage } from '../pages/login/login';
 import { SearchPage } from '../pages/search/search';
 
+
 import { Ionic2Calendar } from '../directive/calendar/calendar';
 import { InputFieldComponent } from '../directive/forms/inputfield/inputfield.component';
 @NgModule({
@@ -27,14 +28,6 @@ import { InputFieldComponent } from '../directive/forms/inputfield/inputfield.co
     TabsPage
   ],
   imports: [
-  //    IonicModule.forRoot(MyApp,{
-  //   menuType: 'push',
-  //   platforms: {
-  //     ios: {
-  //       menuType: 'overlay',
-  //     }
-  //   }
-  // })
     IonicModule.forRoot(MyApp, {
       menuType: 'push',
       tabsHideOnSubPages: true,

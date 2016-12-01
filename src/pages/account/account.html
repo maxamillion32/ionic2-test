@@ -1,64 +1,72 @@
 <ion-header page-account>
   <ion-navbar>
-    <ion-title>
-      个人
-    </ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only >
+      <ion-icon name='ios-person-add'></ion-icon>
+    </button>
+    </ion-buttons>
+
+
+    <ion-segment>
+      <ion-segment-button value="SegmentOne">
+        关注
+      </ion-segment-button>
+      <ion-segment-button value="SegmentTwo">
+        附近
+      </ion-segment-button>
+
+    </ion-segment>
+
+    <ion-buttons end>
+      <button ion-button icon-only >
+        <ion-icon name="ios-stats-outline"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-</ion-header> 
-<ion-content > 
- 
+</ion-header>
 <ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-row text-center>
-        <ion-col>
-          
-        </ion-col>
-      </ion-row>
-    </ion-item>
-    <ion-item>
-      <ion-row text-center>
-        <ion-col>
-          <ion-icon name="bookmark"></ion-icon>
-          收藏
-        </ion-col>
-        <ion-col>
-          <ion-icon name="chatboxes"></ion-icon>
-          消息
-        </ion-col>
-        <ion-col>
-          <ion-icon name="chatbubbles"></ion-icon>
-          话题
-        </ion-col>
-      </ion-row>
-    </ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-list-header>
-      关于
-    </ion-list-header>
-    <ion-item>
-      当前版本
-      <ion-note item-right></ion-note>
-    </ion-item>
-    <ion-item>
-      联系作者
-      <ion-note item-right>356300546@qq.com</ion-note>
-    </ion-item>
-    <ion-item>
-      开源地址
-      <ion-note item-right onclick="window.open('https://github.com/andyhuang123/ionic2-test', '_blank', 'location=yes')">ionic2-test</ion-note>
-    </ion-item>
-    <ion-item onclick="window.open('http://ionichina.com/about', '_blank', 'location=no')">
-      Ionichina社区
-    </ion-item>
-    <!--<a ion-item text-center href="#/user/zxj963577494">
-      <ion-row text-center>
-        <ion-col>
-          &copy; @zxj963577494
-        </ion-col>
-      </ion-row>
-    </a>-->
-  </ion-list>
-</ion-content>
- 
+    <ion-list>
+
+      <ion-item>
+        <ion-row text-center>
+          <ion-col >
+            <ion-icon name="bookmark"></ion-icon>
+            收藏
+          </ion-col>
+          <ion-col>
+            <ion-icon name="chatboxes"></ion-icon>
+            消息
+          </ion-col>
+          <ion-col>
+            <ion-icon name="chatbubbles"></ion-icon>
+            话题
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-list-header>
+        关于
+      </ion-list-header>
+      <ion-item>
+        当前版本
+        <ion-note item-right></ion-note>
+      </ion-item>
+      <ion-item>
+        联系作者
+        <ion-note item-right>356300546@qq.com</ion-note>
+      </ion-item>
+      <ion-item>
+        开源地址
+        <ion-note item-right onclick="window.open('https://github.com/andyhuang123/ionic2-test', '_blank', 'location=yes')">ionic2-test</ion-note>
+      </ion-item>
+      <ion-item onclick="window.open('http://ionichina.com/about', '_blank', 'location=no')">
+        Ionichina社区
+      </ion-item>
+     
+    </ion-list>
+   
+
+   
+
+  </ion-content>

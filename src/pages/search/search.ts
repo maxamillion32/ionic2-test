@@ -45,11 +45,7 @@ export class SearchPage {
     this.viewCtrl.dismiss();
   }
 
-  //  ionViewDidEnter() {
-  //     setTimeout(() => {
-  //       this.searchInput.setFocus();
-  //     }, 5);
-  //   }
+
   initializeItems() {
     this.items = [
       'Amsterdam',

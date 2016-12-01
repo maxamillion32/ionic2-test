@@ -2,71 +2,310 @@
   <ion-navbar>
     <ion-buttons start>
       <button ion-button menuToggle icon-only (click)='toggleMenu()'>
-      <ion-icon name='menu'></ion-icon>
+      <ion-icon name='ios-menu-outline'></ion-icon>
     </button>
     </ion-buttons>
-    <ion-title>首页</ion-title>
+
+    <ion-buttons no-border-bottom (click)="search()">
+      <ion-searchbar color="primary" autofocus type="search" a placeholder="{{placeHolder}}">
+      </ion-searchbar>
+    </ion-buttons>
+
     <ion-buttons end>
-      <button ion-button (click)="search()">
-        <ion-icon name="search"></ion-icon>
+      <button ion-button ion-button icon-only>
+        <ion-icon name="ios-stats-outline"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
   <ion-toolbar>
-    <ion-segment>
-      <ion-segment-button value="SegmentOne">
-        One
+    <ion-segment [(ngModel)]="icons" color="secondary">
+      <ion-segment-button value="camera">
+        个性推荐
       </ion-segment-button>
-      <ion-segment-button value="SegmentTwo">
-        Two
+      <ion-segment-button value="category">
+        分类
       </ion-segment-button>
-      <ion-segment-button value="SegmentThree">
-        Three
+      <ion-segment-button value="activity">
+        活动
+      </ion-segment-button>
+      <ion-segment-button value="Leaderboard">
+        排行榜
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
 </ion-header>
-<ion-content padding>
-
-  <section>
-    <ion-slides #mySlider [options]="mySlideOptions">
+<ion-content>
+  <section *ngIf="icons=='camera'">
+    <ion-slides #mySlider [options]="mySlideOptions" class="card-background-page">
       <ion-slide>
-        <h1>Slide 1</h1>
+        <ion-card class="card-ios-header">
+          <img src="assets/images/icon/card-saopaolo.png" />
+          <div class="card-title">São Paulo</div>
+          <div class="card-subtitle">41 Listings</div>
+        </ion-card>
       </ion-slide>
       <ion-slide>
-        <h1>Slide 2</h1>
+        <ion-card class="card-ios-header">
+          <img src="assets/images/icon/card-saopaolo.png" />
+          <div class="card-title">São Paulo</div>
+          <div class="card-subtitle">41 Listings</div>
+        </ion-card>
       </ion-slide>
       <ion-slide>
-        <h1>Slide 3</h1>
+        <ion-card class="card-ios-header">
+          <img src="assets/images/icon/card-saopaolo.png" />
+          <div class="card-title">São Paulo</div>
+          <div class="card-subtitle">41 Listings</div>
+        </ion-card>
       </ion-slide>
     </ion-slides>
-  </section>
-  <!--<section>
     <ion-list>
-      <ion-item-sliding #item>
-        <ion-item>
-          Item
-        </ion-item>
-        <ion-item-options side="left">
-          <button ion-button (click)="favorite(item)">Favorite</button>
-          <button ion-button color="danger" (click)="share(item)">Share</button>
-        </ion-item-options>
-
-        <ion-item-options side="right">
-          <button ion-button (click)="unread(item)">Unread</button>
-        </ion-item-options>
-      </ion-item-sliding>
+      <ion-grid>
+        <ion-row>
+          <ion-col width-33>
+            <img src="assets/images/icon/tuijian1.svg">
+            <p class="title1">私人推荐</p>
+          </ion-col>
+          <ion-col width-33>
+            <img src="assets/images/icon/daren.svg">
+            <p class="title1">达人攻略</p>
+          </ion-col>
+          <ion-col width-33>
+            <img src="assets/images/icon/paihang.svg">
+            <p class="title1">销量排行</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-list>
-  </section>-->
-  <section>
+    <ion-list>
+      <ion-list-header> 
+        List Header
+        <button ion-button outline item-right (click)="buttonClick()">更多</button>
+      </ion-list-header>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-totoro.png">
+        </ion-thumbnail>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button clear item-right>View</button>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-totoro.png">
+        </ion-thumbnail>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button clear item-right>View</button>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-totoro.png">
+        </ion-thumbnail>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button clear item-right>View</button>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-totoro.png">
+        </ion-thumbnail>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button clear item-right>View</button>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-totoro.png">
+        </ion-thumbnail>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button clear item-right>View</button>
+      </ion-item>
+
+    </ion-list>
+     <ion-list>
+      <ion-list-header>
+        List Header
+      </ion-list-header>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-totoro.png">
+        </ion-thumbnail>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button clear item-right>View</button>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-totoro.png">
+        </ion-thumbnail>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button clear item-right>View</button>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-totoro.png">
+        </ion-thumbnail>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button clear item-right>View</button>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-totoro.png">
+        </ion-thumbnail>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button clear item-right>View</button>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-totoro.png">
+        </ion-thumbnail>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button clear item-right>View</button>
+      </ion-item>
+
+    </ion-list>
+     <ion-list>
+      <ion-list-header>
+        List Header
+      </ion-list-header>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-totoro.png">
+        </ion-thumbnail>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button clear item-right>View</button>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-totoro.png">
+        </ion-thumbnail>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button clear item-right>View</button>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-totoro.png">
+        </ion-thumbnail>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button clear item-right>View</button>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-totoro.png">
+        </ion-thumbnail>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button clear item-right>View</button>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-totoro.png">
+        </ion-thumbnail>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button clear item-right>View</button>
+      </ion-item>
+
+    </ion-list>
+  </section>
+
+  <section *ngIf="icons=='category'">
     <ion-list>
       <a ion-item *ngFor="let item of items" class="list-item">
       item {{item.id}}
     </a>
     </ion-list>
   </section>
+
+  <section *ngIf="icons=='activity'">
+    <ion-list class="card-background-page">
+
+      <ion-card>
+        <img src="assets/images/icon/card-saopaolo.png" />
+        <div class="card-title">São Paulo</div>
+        <div class="card-subtitle">41 Listings</div>
+      </ion-card>
+
+      <ion-card>
+        <img src="assets/images/icon/card-amsterdam.png" />
+        <div class="card-title">Amsterdam</div>
+        <div class="card-subtitle">64 Listings</div>
+      </ion-card>
+
+      <ion-card>
+        <img src="assets/images/icon/card-sf.png" />
+        <div class="card-title">San Francisco</div>
+        <div class="card-subtitle">72 Listings</div>
+      </ion-card>
+
+      <ion-card>
+        <img src="assets/images/icon/card-madison.png" />
+        <div class="card-title">Madison</div>
+        <div class="card-subtitle">28 Listings</div>
+      </ion-card>
+
+    </ion-list>
+  </section>
+
+  <section *ngIf="icons=='Leaderboard'">
+       <ion-list>
+      <ion-list-header> 
+        List Header
+        <button ion-button outline item-right (click)="buttonClick()">更多</button>
+      </ion-list-header>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-totoro.png">
+        </ion-thumbnail>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button clear item-right>View</button>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-totoro.png">
+        </ion-thumbnail>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button clear item-right>View</button>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-totoro.png">
+        </ion-thumbnail>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button clear item-right>View</button>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-totoro.png">
+        </ion-thumbnail>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button clear item-right>View</button>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-totoro.png">
+        </ion-thumbnail>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button clear item-right>View</button>
+      </ion-item>
+
+    </ion-list>
+  </section>
   <ion-fab left bottom>
     <button ion-fab color="light"><ion-icon name="cart"></ion-icon></button>
-
   </ion-fab>
 </ion-content>

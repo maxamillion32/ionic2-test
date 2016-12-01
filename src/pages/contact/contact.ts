@@ -67,6 +67,7 @@ export class ContactPage {
   loginState: any = "in";
   formState: any = "in";
   name: string;
+  msg: string;
   constructor(public navCtrl: NavController) {
       
   }
