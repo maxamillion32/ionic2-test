@@ -1,64 +1,47 @@
-<ion-header page-login>
-  <ion-navbar>
-    <ion-title>
-      用户登录
-    </ion-title>
-  </ion-navbar>
-</ion-header> 
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+		<ion-title>Login</ion-title>
+	</ion-navbar>
+</ion-header>
+
 <ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-row text-center>
-        <ion-col>
-          <img src="img/person.png" class="avatar">
-          <br/>
-          <br/>
-          <h4>立即登录</h4>
-        </ion-col>
-      </ion-row>
-    </ion-item>
-    <ion-item>
-      <ion-row text-center>
-        <ion-col>
-          <ion-icon name="bookmark"></ion-icon>
-          收藏
-        </ion-col>
-        <ion-col>
-          <ion-icon name="chatboxes"></ion-icon>
-          消息
-        </ion-col>
-        <ion-col>
-          <ion-icon name="chatbubbles"></ion-icon>
-          话题
-        </ion-col>
-      </ion-row>
-    </ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-list-header>
-      关于
-    </ion-list-header>
-    <ion-item>
-      当前版本
-      <ion-note item-right></ion-note>
-    </ion-item>
-    <ion-item>
-      联系作者
-      <ion-note item-right>963577494@qq.com</ion-note>
-    </ion-item>
-    <ion-item>
-      开源地址
-      <ion-note item-right onclick="window.open('https://github.com/zxj963577494/ionic2-ioniclub', '_blank', 'location=yes')">ionic2-ioniclub</ion-note>
-    </ion-item>
-    <ion-item onclick="window.open('http://ionichina.com/about', '_blank', 'location=no')">
-      Ionichina社区
-    </ion-item>
-    <a ion-item text-center href="#/user/zxj963577494">
-      <ion-row text-center>
-        <ion-col>
-          &copy; @zxj963577494
-        </ion-col>
-      </ion-row>
-    </a>
-  </ion-list>
+	<div class="logo">
+		<img src="assets/img/appicon.svg" alt="Ionic logo">
+	</div>
+
+	<form #loginForm="ngForm" novalidate>
+		<ion-list no-lines>
+			<ion-item>
+				<ion-label stacked color="primary">Username</ion-label>
+				<ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
+					required>
+				</ion-input>
+			</ion-item>
+			<p [hidden]="username.valid || submitted == false" color="danger" padding-left>
+				Username is required
+			</p>
+
+			<ion-item>
+				<ion-label stacked color="primary">Password</ion-label>
+				<ion-input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
+				</ion-input>
+			</ion-item>
+			<p [hidden]="password.valid || submitted == false" color="danger" padding-left>
+				Password is required
+			</p>
+		</ion-list>
+
+		<ion-row responsive-sm>
+			<ion-col>
+				<button ion-button (click)="onLogin(loginForm)" type="submit" block>Login</button>
+			</ion-col>
+			<ion-col>
+				<button ion-button (click)="onSignup()" color="light" block>Signup</button>
+			</ion-col>
+		</ion-row>
+	</form>
+
 </ion-content>

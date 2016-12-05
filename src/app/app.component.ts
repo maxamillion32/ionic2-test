@@ -1,72 +1,60 @@
-import { Component } from '@angular/core';
-import { Platform  } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
-
+import { Component,ViewChild } from '@angular/core'; 
+import { Events, MenuController, Nav, Platform } from 'ionic-angular';
+import { Splashscreen, StatusBar } from 'ionic-native';
+import { Storage } from '@ionic/storage';
 import { TabsPage } from '../pages/tabs/tabs';
 
 
-@Component({
-  template: `<ion-menu side="left" [content]="mycontent">
-              <ion-header> 
-                <ion-navbar>
-                  <ion-buttons start>
-                    <button ion-button icon-only >
-                      <ion-icon name="contact"></ion-icon>
-                    </button>
-                  </ion-buttons>
-                  <ion-title>
-                    个人中心
-                  </ion-title> 
-                </ion-navbar> 
-              </ion-header>
-              <ion-content>
-                <ion-list>
-                  <ion-item>
-                    <ion-avatar item-left>
-                      <img src="img/avatar-cher.png">
-                    </ion-avatar>
-                    <h2>Cher</h2>
-                    <p>Ugh. As if.</p>
-                  </ion-item>
-                </ion-list>
-                <ion-list>
-                    <ion-item>
-                      <ion-icon name="ios-mail-outline" item-left></ion-icon>
-                        消息 
-                        <ion-badge color="secondary">1</ion-badge>
-                    </ion-item>
-                    <ion-item>
-                      <ion-icon name="ios-bookmark-outline" item-left></ion-icon>
-                        收藏
-                       <ion-badge color="secondary">11</ion-badge>
-                    </ion-item>
-                    <ion-item>
-                      <ion-icon name="ios-chatbubbles-outline" item-left></ion-icon>
-                        话题
-                      <ion-badge color="secondary">5</ion-badge>
-                    </ion-item>
-                  </ion-list>
-                   <ion-list>
-                    <ion-item>
-                      <ion-icon name="ios-contact-outline" item-left></ion-icon>
-                        登陆
-                       
-                    </ion-item>
-                    <ion-item>
-                      <ion-icon name="ios-contacts-outline" item-left></ion-icon>
-                       注册
-                      
-                    </ion-item>
-                    
-                  </ion-list>
-              </ion-content>
-            </ion-menu>
-            <ion-nav #mycontent [root]="rootPage"></ion-nav>`
-})
-export class MyApp {
-  rootPage = TabsPage;
+import { ConferenceData } from '../providers/conference-data';
+import { UserData } from '../providers/user-data';
 
-  constructor(platform: Platform) {
+import { AboutPage } from '../pages/about/about';
+import { ContactPage } from '../pages/contact/contact';
+import { HomePage } from '../pages/home/home';
+import { AccountPage } from '../pages/account/account';
+import { LoginPage } from '../pages/login/login';
+
+export interface PageInterface {
+  title: string;
+  component: any;
+  icon: string;
+  logsOut?: boolean;
+  index?: number;
+}
+
+@Component({
+  templateUrl: 'app.template.html'
+})  
+export class MyApp {
+   @ViewChild(Nav) nav: Nav;
+
+  appPages: PageInterface[] = [
+    { title: '发现', component: TabsPage, index: 0,icon: 'home' },
+    { title: '活动', component: TabsPage, index: 1, icon: 'information-circle' },
+    { title: '朋友', component: TabsPage, index: 2, icon: 'person' },
+    { title: '帮助', component: TabsPage, index: 3, icon: 'cube' }
+  ];
+  loggedInPages: PageInterface[] = [
+    { title: 'Account', component: AccountPage, icon: 'person' },
+    // { title: 'Support', component: SupportPage, icon: 'help' },
+    { title: 'Logout', component: TabsPage, icon: 'log-out', logsOut: true }
+  ];
+  loggedOutPages: PageInterface[] = [
+    { title: 'Login', component: LoginPage, icon: 'log-in' },
+    // { title: 'Support', component: SupportPage, icon: 'help' },
+    //{ title: 'Signup', component: SignupPage, icon: 'person-add' }
+  ];
+  rootPage: any;
+  // rootPage = TabsPage;
+
+  constructor(
+    public events: Events,
+    public userData: UserData,
+    public menu: MenuController,
+    public platform: Platform,
+    public confData: ConferenceData,
+    public storage: Storage
+  ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -74,8 +62,73 @@ export class MyApp {
       Splashscreen.hide();
     });
     
+     // Check if the user has already seen the tutorial
+    this.userData.checkHasSeenTutorial().then((hasSeenTutorial) => {
+      if (hasSeenTutorial === null) {
+        // User has not seen tutorial
+        //this.rootPage = TutorialPage;
+        this.rootPage = TabsPage;
+      } else {
+        // User has seen tutorial
+        this.rootPage = TabsPage;
+      }
+    });
+     // load the conference data
+    confData.load();
+
+    // decide which menu items should be hidden by current login status stored in local storage
+    this.userData.hasLoggedIn().then((hasLoggedIn) => {
+      this.enableMenu(hasLoggedIn === true);
+    });
+
+    this.listenToLoginEvents();
+    
   }
-  
+   openPage(page: PageInterface) {
+     console.log(page);
+    // the nav component was found using @ViewChild(Nav)
+    // reset the nav to remove previous pages and only have this page
+    // we wouldn't want the back button to show in this scenario
+    if (page.index) {
+      this.nav.setRoot(page.component, { tabIndex: page.index });
+
+    } else {
+      this.nav.setRoot(page.component).catch(() => {
+        console.log("Didn't set nav root");
+      });
+    }
+
+    if (page.logsOut === true) {
+      // Give the menu time to close before changing to logged out
+      setTimeout(() => {
+        this.userData.logout();
+      }, 1000);
+    }
+  }
+
+  openTutorial() {
+    //this.nav.setRoot(TutorialPage);
+    this.nav.setRoot(TabsPage);
+  }
+
+  listenToLoginEvents() {
+    this.events.subscribe('user:login', () => {
+      this.enableMenu(true);
+    });
+
+    this.events.subscribe('user:signup', () => {
+      this.enableMenu(true);
+    });
+
+    this.events.subscribe('user:logout', () => {
+      this.enableMenu(false);
+    });
+  }
+
+  enableMenu(loggedIn) {
+    this.menu.enable(loggedIn, 'loggedInMenu');
+    this.menu.enable(!loggedIn, 'loggedOutMenu');
+  }
 
 
 
