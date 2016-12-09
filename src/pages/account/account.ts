@@ -22,5 +22,34 @@ export class AccountPage {
   ionViewCanEnter(){
    
   }
-  
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
 }
+
+/*
+angular.module('example', ['ionic'])
+
+.directive('elasticImage', function($ionicScrollDelegate) {
+	return {
+		restrict: 'A',
+		link: function($scope, $scroller, $attr) {
+			var image = document.getElementById($attr.elasticImage);
+      var imageHeight = image.offsetHeight;
+			
+			$scroller.bind('scroll', function(e) {
+				var scrollTop = e.detail.scrollTop;
+				var newImageHeight = imageHeight - scrollTop;
+				if (newImageHeight < 0) {
+					newImageHeight = 0;
+				}
+				image.style.height = newImageHeight + 'px';
+			});
+		}
+	}
+});*/

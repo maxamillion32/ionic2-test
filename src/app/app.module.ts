@@ -16,11 +16,15 @@ import { UserData } from '../providers/user-data';
 
 import { Ionic2Calendar } from '../directive/calendar/calendar';
 import { InputFieldComponent } from '../directive/forms/inputfield/inputfield.component';
+
+import { ImageZoomModule } from 'angular2-image-zoom';
+import { ElasticHeader } from '../directive/elastic-header';
 @NgModule({
   declarations: [
     MyApp,
     Ionic2Calendar,
     InputFieldComponent,
+    ElasticHeader,
     CalendarPage,
     LoginPage,
     SearchPage,
@@ -30,7 +34,7 @@ import { InputFieldComponent } from '../directive/forms/inputfield/inputfield.co
     HomePage,
     TabsPage
   ],
-  imports: [
+  imports: [ 
     IonicModule.forRoot(MyApp, {
       menuType: 'push',
       tabsHideOnSubPages: true,
@@ -42,7 +46,8 @@ import { InputFieldComponent } from '../directive/forms/inputfield/inputfield.co
             }
           }
       // pageTransition: 'md-transition'
-    })
+    }),
+    ImageZoomModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
