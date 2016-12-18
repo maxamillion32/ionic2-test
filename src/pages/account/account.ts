@@ -4,52 +4,58 @@
 *
 *
 */
-import { Component ,ViewChild} from '@angular/core';
-import { NavController,ViewController } from 'ionic-angular';
-import { LoginPage } from '../login/login';
+import { Component ,ViewChild,ElementRef} from '@angular/core';
+import { NavController,ViewController ,Slides ,Events} from 'ionic-angular';
+ 
  
 @Component({
   selector: 'page-account',
   templateUrl: 'account.html'
 })
 export class AccountPage {
-   
-  constructor(public navCtrl: NavController,public view: ViewController) {
+  slides: any[];
+  @ViewChild('loopSlider') loopSlider: Slides;
+  startingIndex: number;
+  myTopSlideOptions: any;
+  el: any;
+  constructor(public navCtrl: NavController,public view: ViewController,public element: ElementRef,public events: Events) {
       this.view = view;
+      this.el = element;
+      this.slides = [
+      {
+        name: 'Slide 1',
+        class: 'yellow'
+      },
+      {
+        name: 'Slide 2',
+        class: 'red'
+      },
+      {
+        name: 'Slide 3',
+        class: 'blue'
+      }
+    ];
+
+    this.myTopSlideOptions = {
+      initialSlide: 2,
+      loop: true
+    };
+
       
 
   } 
   ionViewCanEnter(){
    
   }
-  doRefresh(refresher) {
-    console.log('Begin async operation', refresher);
-
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      refresher.complete();
-    }, 2000);
+  onSlideChanged(slider: Slides) {
+    console.log('Slide changed', slider);
+   // this.events.trigger("slideChange", {"index" : index});
   }
+
+  ngAfterViewInit() {
+    console.log(this.loopSlider);
+  }
+
+
 }
 
-/*
-angular.module('example', ['ionic'])
-
-.directive('elasticImage', function($ionicScrollDelegate) {
-	return {
-		restrict: 'A',
-		link: function($scope, $scroller, $attr) {
-			var image = document.getElementById($attr.elasticImage);
-      var imageHeight = image.offsetHeight;
-			
-			$scroller.bind('scroll', function(e) {
-				var scrollTop = e.detail.scrollTop;
-				var newImageHeight = imageHeight - scrollTop;
-				if (newImageHeight < 0) {
-					newImageHeight = 0;
-				}
-				image.style.height = newImageHeight + 'px';
-			});
-		}
-	}
-});*/

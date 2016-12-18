@@ -35,12 +35,12 @@ export class MyApp {
     { title: '帮助', component: TabsPage, index: 3, icon: 'cube' }
   ];
   loggedInPages: PageInterface[] = [
-    { title: 'Account', component: AccountPage, icon: 'person' },
+    { title: '用户中心', component: AccountPage, icon: 'person' },
     // { title: 'Support', component: SupportPage, icon: 'help' },
-    { title: 'Logout', component: TabsPage, icon: 'log-out', logsOut: true }
+    { title: '退出', component: TabsPage, icon: 'log-out', logsOut: true }
   ];
   loggedOutPages: PageInterface[] = [
-    { title: 'Login', component: LoginPage, icon: 'log-in' },
+    { title: '登录', component: LoginPage, icon: 'log-in' },
     // { title: 'Support', component: SupportPage, icon: 'help' },
     //{ title: 'Signup', component: SignupPage, icon: 'person-add' }
   ];

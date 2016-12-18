@@ -1,6 +1,7 @@
 import { Component , ViewChild, ElementRef} from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Geolocation , Device } from 'ionic-native';
+ 
 
 declare var BMap;
 declare var baidu_location;
@@ -16,7 +17,7 @@ export class Map {
    map:any;
    watch:any;
   constructor(public navCtrl: NavController) {
-  	this.plat=Device.device.platform;
+  	this.plat= Device.platform;
   	if(this.plat=="Android") {
   		(<any>baidu_location).watchPosition((successCallback) => {
 	   		let lon=successCallback.longitude;
