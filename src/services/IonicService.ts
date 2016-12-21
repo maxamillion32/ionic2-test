@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { ConfigService } from "./ConfigService";
-//import { AuthHttp } from 'angular2-jwt';
+import { AuthHttp } from 'angular2-jwt';
 import * as helper from '../directive/helpers';
 import 'rxjs/Rx';
 
