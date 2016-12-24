@@ -21,9 +21,10 @@ export class HomePage {
   placeHolder: string = '搜索关键词';
   private items: any;
   icons: string = 'camera';
+ 
   constructor(public viewCtrl: ViewController, public navCtrl: NavController, public menuCtrl: MenuController, public loading: LoadingController) {
     this.title = 'APP';
-
+    //this.visitTime = new Date().toISOString();
     this.items = [];
 
     for (let i = 0; i < 100; i++) {
