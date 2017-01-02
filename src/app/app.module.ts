@@ -10,6 +10,9 @@ import { CalendarPage } from '../pages/calendar/calendar';
 import { LoginPage } from '../pages/login/login';
 import { SearchPage } from '../pages/search/search';
 
+import { ConfigService } from '../services/ConfigService';
+import { IonicService } from '../services/IonicService';
+
 import { Storage } from '@ionic/storage';
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
@@ -61,6 +64,6 @@ import { ElasticHeader } from '../directive/elastic-header';
     HomePage,
     TabsPage
   ],
-  providers: [Ionic2Calendar,InputFieldComponent,ConferenceData, UserData, Storage]
+  providers: [Ionic2Calendar,InputFieldComponent,,ConferenceData,ConfigService,IonicService, UserData, Storage]
 })
 export class AppModule { }
