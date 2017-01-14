@@ -1,4 +1,4 @@
-<ion-header page-home no-shadow no-border>
+<ion-header>
   <ion-navbar>
     <ion-buttons start>
       <button ion-button menuToggle icon-only (click)='toggleMenu()'>
@@ -17,7 +17,8 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-  <ion-toolbar>
+   <my-slide (slideClick)="onSlideClick($event)" [slides]="pageSlides" [pageNumber]="6"></my-slide>
+  <!--<ion-toolbar>
     <ion-segment [(ngModel)]="icons" color="secondary">
       <ion-segment-button value="camera">
         个性推荐
@@ -32,10 +33,10 @@
         排行榜
       </ion-segment-button>
     </ion-segment>
-  </ion-toolbar>
+  </ion-toolbar>-->
 </ion-header>
 <ion-content>
-  <section *ngIf="icons=='camera'">
+  <!--<section *ngIf="icons=='camera'">
     <ion-slides #mySlider [options]="mySlideOptions" class="card-background-page">
       <ion-slide>
         <ion-card class="card-ios-header">
@@ -225,6 +226,7 @@
   </section>
 
   <section *ngIf="icons=='category'">
+    
     <ion-list>
       <a ion-item *ngFor="let item of items" class="list-item">
       item {{item.id}}
@@ -313,5 +315,26 @@
   </section>
   <ion-fab left bottom>
     <button ion-fab color="light"><ion-icon name="cart"></ion-icon></button>
-  </ion-fab>
+  </ion-fab>-->
+
+
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content refreshingSpinner="circles" refreshingText="推荐中" pullingIcon="none"></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list class="item" style="padding-right:15px">
+    <ion-item *ngFor="let homeArticle of homeArticles" (click)="showArticle($event, homeArticle.url)">
+
+
+      <h2>{{homeArticle.title}}</h2>
+      <span> {{homeArticle.author_name}} </span>
+      <span class="date"> {{homeArticle.date}}</span>
+
+      <div class="box"><img src={{homeArticle.picture3}}></div>
+
+
+    </ion-item>
+  </ion-list>
+
 </ion-content>

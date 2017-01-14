@@ -17,15 +17,22 @@ import { Storage } from '@ionic/storage';
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
 
+/* directive */
 import { Ionic2Calendar } from '../directive/calendar/calendar';
 import { InputFieldComponent } from '../directive/forms/inputfield/inputfield.component';
 
 import { ImageZoomModule } from 'angular2-image-zoom';
 import { ElasticHeader } from '../directive/elastic-header';
+
+
+/* component */ 
+import { MySlide } from '../component/my-slide/my-slide';
+
 @NgModule({
   declarations: [
     MyApp,
     Ionic2Calendar,
+    MySlide,
     InputFieldComponent,
     ElasticHeader,
     CalendarPage,
@@ -56,6 +63,7 @@ import { ElasticHeader } from '../directive/elastic-header';
   entryComponents: [
     MyApp,
     CalendarPage,
+    MySlide,
     LoginPage,
     SearchPage,
     AboutPage,
