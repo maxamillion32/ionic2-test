@@ -15,6 +15,7 @@
 	<form #loginForm="ngForm" novalidate>
 		<ion-list no-lines>
 			<ion-item>
+				<ion-icon name='person' item-left isActive='false'></ion-icon>
 				<ion-label stacked color="primary">用户名</ion-label>
 				<ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
 					required>
@@ -25,6 +26,7 @@
 			</p>
 
 			<ion-item>
+				<ion-icon name='person' item-left isActive='false'></ion-icon>
 				<ion-label stacked color="primary">密码</ion-label>
 				<ion-input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
 				</ion-input>
