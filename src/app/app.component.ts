@@ -14,6 +14,9 @@ import { HomePage } from '../pages/home/home';
 import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
 
+
+import { Brightness } from 'ionic-native';
+
 export interface PageInterface {
   title: string;
   component: any;
@@ -46,6 +49,10 @@ export class MyApp {
   ];
   rootPage: any;
   // rootPage = TabsPage;
+    private backpressed:boolean = false;
+    public usename:string;
+    public picture:string;
+    public flag:boolean;
 
   constructor(
     public events: Events,
@@ -54,6 +61,7 @@ export class MyApp {
     public platform: Platform,
     public confData: ConferenceData,
     public storage: Storage
+  
   ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -129,7 +137,19 @@ export class MyApp {
     this.menu.enable(loggedIn, 'loggedInMenu');
     this.menu.enable(!loggedIn, 'loggedOutMenu');
   }
+  //样式切换
+  setBrightnessz(){
+    alert("hello");
+        let brightnessValue:number = 0.3;
+        if (this.flag) {
+          Brightness.setBrightness(1);
+          this.flag = false;
+        } else {
 
+          Brightness.setBrightness(brightnessValue);
+          this.flag = true;
+        }
 
+  }
 
 }
