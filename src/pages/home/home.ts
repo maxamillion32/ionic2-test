@@ -4,7 +4,7 @@
 *
 *
 */
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { ViewController, NavController, Slides, MenuController, LoadingController } from 'ionic-angular';
 import { SearchPage } from '../search/search';
 import { MySlide } from '../../component/my-slide/my-slide';
@@ -14,12 +14,9 @@ import { IonicService } from '../../services/IonicService';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  // @ViewChild('mySlider') slider: Slides;
-   title: string;
-  // mySlideOptions = {
-  //   initialSlide: 0,
-  //   loop: true
-  // };
+ 
+  title: string;
+   
   placeHolder: string = '搜索关键词';
   private items: any;
   icons: string = 'camera';
@@ -27,20 +24,21 @@ export class HomePage {
   pageIndex:number = 0;
   pageContent:string;
   pageSlides:string[] = ["头条", "社会", "国内", "国际", "娱乐", "体育", "军事", "科技", "财经", "时尚"];
-
+  
   constructor(public viewCtrl: ViewController,
               public navCtrl: NavController, 
               public menuCtrl: MenuController, public service: IonicService,
               public loading: LoadingController) {
     this.title = 'APP';
     //this.visitTime = new Date().toISOString();
-    this.items = []; 
-   
+  
+    
     this.loadData();
     this.setPageContent();
   }
 
  onSlideClick(index) {
+   console.log(index);
     this.pageIndex = index;
     this.setPageContent();
   }

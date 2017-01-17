@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header page-home>
   <ion-navbar>
     <ion-buttons start>
       <button ion-button menuToggle icon-only (click)='toggleMenu()'>
@@ -7,7 +7,7 @@
     </ion-buttons>
 
     <ion-buttons no-border-bottom (click)="search()">
-      <ion-searchbar color="primary" autofocus type="search" a placeholder="{{placeHolder}}">
+      <ion-searchbar color="primary" autofocus type="search" a placeholder="{{placeHolder}}" disabled>
       </ion-searchbar>
     </ion-buttons>
 
@@ -17,7 +17,7 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-   <my-slide (slideClick)="onSlideClick($event)" [slides]="pageSlides" [pageNumber]="6"></my-slide>
+   <my-slide (slideClick)="onSlideClick($event)" [slides]="pageSlides" [pageNumber]="7"></my-slide>
   <!--<ion-toolbar>
     <ion-segment [(ngModel)]="icons" color="secondary">
       <ion-segment-button value="camera">
@@ -35,7 +35,8 @@
     </ion-segment>
   </ion-toolbar>-->
 </ion-header>
-<ion-content>
+<ion-content class="home">
+  
   <!--<section *ngIf="icons=='camera'">
     <ion-slides #mySlider [options]="mySlideOptions" class="card-background-page">
       <ion-slide>
