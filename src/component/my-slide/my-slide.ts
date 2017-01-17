@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter,ViewChild} from '@angular/core';
- 
+import { Slides } from 'ionic-angular';
 /*
  Generated class for the MySlide component.
  See https://angular.io/docs/ts/latest/api/core/ComponentMetadata-class.html
@@ -10,30 +10,34 @@ import {Component, Input, Output, EventEmitter,ViewChild} from '@angular/core';
   templateUrl: 'my-slide.html'
 })
 export class MySlide { 
-  
+  @ViewChild(Slides) loopslides: Slides;
   @Input("slides") slides:string[] = [];
-  @Input("pageNumber") pageNumber:number = 5;
+ // @Input("pageNumber") pageNumber:number = 5;
   @Output("slideClick") slideClick = new EventEmitter<number>();
-
-  mySlideOptions;
+ 
   selectedIndex:number = 0;
   
   constructor() {
       
   }
- 
+  slideChanged(){
+   
+     console.log(this.loopslides);
+  }
   ngOnInit() {
-    this.mySlideOptions = {
-      loop: false,
-      autoplay: false,
-      initialSlide: 0,
-      pager: false,  
-      slidesPerView: this.pageNumber,
-      paginationHide: true,
-      paginationClickable: true,
-      centeredSlides: true
+    this.loopslides.slidesPerView = '7';
+
+    // this.mySlideOptions = {
+    //   loop: false,
+    //   autoplay: false,
+    //   initialSlide: 0,
+    //   pager: false,  
+    //   slidesPerView: this.pageNumber,
+    //   paginationHide: true,
+    //   paginationClickable: true,
+    //   centeredSlides: true
       
-    };
+    // };
   }
  
   onClick(index) {

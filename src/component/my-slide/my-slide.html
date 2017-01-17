@@ -2,9 +2,20 @@
   Generated template for the MySlide component.
   See https://angular.io/docs/ts/latest/api/core/ComponentMetadata-class.html
   for more info on Angular 2 Components.
+  this.mySlideOptions = {
+      loop: false,
+      autoplay: false,
+      initialSlide: 0,
+      pager: false,  
+      slidesPerView: this.pageNumber,
+      paginationHide: true,
+      paginationClickable: true,
+      centeredSlides: true
+      
+    };
 -->
 
-<ion-slides class="slide-title"  [options]="mySlideOptions" >
+<ion-slides class="slide-title" #loopslides loop="false" autoplay="fasle" pager="fasle" paginationType="true" initialSlide="0" (ionSlideDidChange)="slideChanged()">
   <ion-slide *ngFor="let slide of slides; let i = index;">
     <div (click)="onClick(i)">
       <span class="slide-title-unit" [ngClass]="{'slide-title-active': selectedIndex == i}">{{slide}}</span>
