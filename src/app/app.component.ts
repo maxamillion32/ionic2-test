@@ -1,4 +1,4 @@
-import { Component,ViewChild } from '@angular/core'; 
+import { Component, ViewChild } from '@angular/core';
 import { Events, MenuController, Nav, Platform } from 'ionic-angular';
 import { Splashscreen, StatusBar } from 'ionic-native';
 import { Storage } from '@ionic/storage';
@@ -27,12 +27,12 @@ export interface PageInterface {
 
 @Component({
   templateUrl: 'app.template.html'
-})  
+})
 export class MyApp {
-   @ViewChild(Nav) nav: Nav;
+  @ViewChild(Nav) nav: Nav;
 
   appPages: PageInterface[] = [
-    { title: '发现', component: TabsPage, index: 0,icon: 'home' },
+    { title: '发现', component: TabsPage, index: 0, icon: 'home' },
     { title: '活动', component: TabsPage, index: 1, icon: 'information-circle' },
     { title: '朋友', component: TabsPage, index: 2, icon: 'person' },
     { title: '帮助', component: TabsPage, index: 3, icon: 'cube' }
@@ -49,10 +49,10 @@ export class MyApp {
   ];
   rootPage: any;
   // rootPage = TabsPage;
-    private backpressed:boolean = false;
-    public usename:string;
-    public picture:string;
-    public flag:boolean;
+  private backpressed: boolean = false;
+  public usename: string;
+  public picture: string;
+  public flag: boolean;
 
   constructor(
     public events: Events,
@@ -61,7 +61,7 @@ export class MyApp {
     public platform: Platform,
     public confData: ConferenceData,
     public storage: Storage
-  
+
   ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -69,8 +69,8 @@ export class MyApp {
       StatusBar.styleDefault();
       Splashscreen.hide();
     });
-    
-     // Check if the user has already seen the tutorial
+
+    // Check if the user has already seen the tutorial
     this.userData.checkHasSeenTutorial().then((hasSeenTutorial) => {
       if (hasSeenTutorial === null) {
         // User has not seen tutorial
@@ -81,7 +81,7 @@ export class MyApp {
         this.rootPage = TabsPage;
       }
     });
-     // load the conference data
+    // load the conference data
     confData.load();
 
     // decide which menu items should be hidden by current login status stored in local storage
@@ -90,10 +90,10 @@ export class MyApp {
     });
 
     this.listenToLoginEvents();
-    
+
   }
-   openPage(page: PageInterface) {
-     console.log(page);
+  openPage(page: PageInterface) {
+    console.log(page);
     // the nav component was found using @ViewChild(Nav)
     // reset the nav to remove previous pages and only have this page
     // we wouldn't want the back button to show in this scenario
@@ -138,17 +138,17 @@ export class MyApp {
     this.menu.enable(!loggedIn, 'loggedOutMenu');
   }
   //样式切换
-  setBrightnessz(){
+  setBrightnessz() {
     alert("hello");
-        let brightnessValue:number = 0.3;
-        if (this.flag) {
-          Brightness.setBrightness(1);
-          this.flag = false;
-        } else {
+    let brightnessValue: number = 0.3;
+    if (this.flag) {
+      Brightness.setBrightness(1);
+      this.flag = false;
+    } else {
 
-          Brightness.setBrightness(brightnessValue);
-          this.flag = true;
-        }
+      Brightness.setBrightness(brightnessValue);
+      this.flag = true;
+    }
 
   }
 

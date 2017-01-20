@@ -24,32 +24,55 @@ export class HomePage {
   pageIndex:number = 0;
   pageContent:string;
   pageSlides:string[] = ["头条", "社会", "国内", "国际", "娱乐", "体育", "军事", "科技", "财经", "时尚"];
-  
+
+  public loading;
   constructor(public viewCtrl: ViewController,
               public navCtrl: NavController, 
               public menuCtrl: MenuController, public service: IonicService,
-              public loading: LoadingController) {
+              public loadCtrl: LoadingController) {
     this.title = 'APP';
     //this.visitTime = new Date().toISOString();
   
-    
+    this.loading = this.loadCtrl.create({
+      content: '加载中...',
+
+    });
+    this.loading.present();
+    setTimeout(() => {
+        this.loading.dismiss();
+    }, 3000);
+
     this.loadData();
     this.setPageContent();
   }
+ //刷新 
+ doRefresh(refresher) { 
+    setTimeout(() => {
+      this.getNewArticle(this.pageContent);
+      refresher.complete();
+    }, 3000);
 
+  }
+getNewArticle(itemName){
+
+}
  onSlideClick(index) {
    console.log(index);
     this.pageIndex = index;
     this.setPageContent();
   }
+//页面初始化执行次操作，推荐将复杂的东西要放在ngOnInit()方法里，不要放在构造方法里
+  ngOnInit() {
 
+  }
   setPageContent() {
     this.pageContent = this.pageSlides[this.pageIndex];
   }
 
   loadData(){
     let url = 'users';
-  		this.service.httpGetNoAuth(url).subscribe(data =>{
+    let autoData = '';
+  		this.service.httpGetNoAuth(url,autoData).subscribe(data =>{
           console.log(data);
 
       },(error) => {
