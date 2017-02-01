@@ -13,6 +13,11 @@
    登陆界面
    服务接口
     md5
+     
+   2017/2/1  hx . 添加 ng2-translate  国际化
+   ===============================   
+   http://ionicframework.com/docs/v2/resources/ng2-translate/
+   npm install ng2-translate --save
    
 
 
