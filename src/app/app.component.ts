@@ -17,6 +17,8 @@ import { LoginPage } from '../pages/login/login';
 
 import { Brightness } from 'ionic-native';
 
+import { TranslateService } from "ng2-translate";
+
 export interface PageInterface {
   title: string;
   component: any;
@@ -60,7 +62,8 @@ export class MyApp {
     public menu: MenuController,
     public platform: Platform,
     public confData: ConferenceData,
-    public storage: Storage
+    public storage: Storage,
+    translate: TranslateService
 
   ) {
     platform.ready().then(() => {
@@ -68,8 +71,12 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
+     
     });
-
+    // this language will be used as a fallback when a translation isn't found in the current language
+       translate.setDefaultLang('zh');
+    // the lang to use, if the lang isn't available, it will use the current loader to get them
+       translate.use('zh');  
     // Check if the user has already seen the tutorial
     this.userData.checkHasSeenTutorial().then((hasSeenTutorial) => {
       if (hasSeenTutorial === null) {

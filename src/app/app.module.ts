@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { IonicApp, IonicModule } from 'ionic-angular';
+import { NgModule,ErrorHandler} from '@angular/core';
+import { IonicApp, IonicModule , IonicErrorHandler  } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -27,6 +27,16 @@ import { ElasticHeader } from '../directive/elastic-header';
 
 /* component */ 
 import { MySlide } from '../component/my-slide/my-slide';
+
+/* 国际化 */ 
+import { TranslateModule } from 'ng2-translate/ng2-translate';
+import { Http } from "@angular/http";
+import { TranslateLoader, TranslateStaticLoader } from "ng2-translate";
+
+export function createTranslateLoader(http: Http) {
+ return new TranslateStaticLoader(http, './assets/i18n', '.json');
+}
+
 
 @NgModule({
   declarations: [
@@ -57,6 +67,11 @@ import { MySlide } from '../component/my-slide/my-slide';
           }
       // pageTransition: 'md-transition'
     }),
+    TranslateModule.forRoot({
+     provide: TranslateLoader,
+     useFactory: (createTranslateLoader),
+     deps: [Http]
+   }),
     ImageZoomModule
   ],
   bootstrap: [IonicApp],
@@ -72,6 +87,6 @@ import { MySlide } from '../component/my-slide/my-slide';
     HomePage,
     TabsPage
   ],
-  providers: [Ionic2Calendar,InputFieldComponent,,ConferenceData,ConfigService,IonicService, UserData, Storage]
+  providers: [Ionic2Calendar,InputFieldComponent,,ConferenceData,ConfigService,IonicService, UserData, Storage,{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule { }

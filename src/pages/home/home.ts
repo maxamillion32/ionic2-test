@@ -9,59 +9,78 @@ import { ViewController, NavController, Slides, MenuController, LoadingControlle
 import { SearchPage } from '../search/search';
 import { MySlide } from '../../component/my-slide/my-slide';
 import { IonicService } from '../../services/IonicService';
+
+import { TranslateService } from "ng2-translate";
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
- 
+
   title: string;
-   
+
   placeHolder: string = '搜索关键词';
   private items: any;
   icons: string = 'camera';
- 
-  pageIndex:number = 0;
-  pageContent:string;
-  pageSlides:string[] = ["头条", "社会", "国内", "国际", "娱乐", "体育", "军事", "科技", "财经", "时尚"];
+
+  pageIndex: number = 0;
+  pageContent: string;
+  pageSlides: string[] = ["头条", "社会", "国内", "国际", "娱乐", "体育", "军事", "科技", "财经", "时尚"];
 
   public loading;
+
+  languageCode: string = "zh";
   constructor(public viewCtrl: ViewController,
-              public navCtrl: NavController, 
-              public menuCtrl: MenuController, public service: IonicService,
-              public loadCtrl: LoadingController) {
+    public navCtrl: NavController,
+    public menuCtrl: MenuController, public service: IonicService,
+    public loadCtrl: LoadingController,
+    public translate: TranslateService) {
     this.title = 'APP';
     //this.visitTime = new Date().toISOString();
-  
+
     this.loading = this.loadCtrl.create({
       content: '加载中...',
 
     });
     this.loading.present();
     setTimeout(() => {
-        this.loading.dismiss();
+      this.loading.dismiss();
     }, 3000);
 
     this.loadData();
     this.setPageContent();
   }
- //刷新 
- doRefresh(refresher) { 
+  //刷新 
+  doRefresh(refresher) {
     setTimeout(() => {
       this.getNewArticle(this.pageContent);
       refresher.complete();
     }, 3000);
 
   }
-getNewArticle(itemName){
+  //更改语言
+  changeLanguage(): void {
 
-}
- onSlideClick(index) {
-   console.log(index);
+    if (this.languageCode == "zh") {
+      this.translate.use('en');
+      this.languageCode = 'en';
+    }
+    else {
+      this.translate.use('zh');
+      this.languageCode = 'zh';
+    }
+    console.log("current language is :" + this.translate.currentLang);
+
+  }
+  getNewArticle(itemName) {
+
+  }
+  onSlideClick(index) {
+    console.log(index);
     this.pageIndex = index;
     this.setPageContent();
   }
-//页面初始化执行次操作，推荐将复杂的东西要放在ngOnInit()方法里，不要放在构造方法里
+  //页面初始化执行次操作，推荐将复杂的东西要放在ngOnInit()方法里，不要放在构造方法里
   ngOnInit() {
 
   }
@@ -69,16 +88,16 @@ getNewArticle(itemName){
     this.pageContent = this.pageSlides[this.pageIndex];
   }
 
-  loadData(){
+  loadData() {
     let url = 'users';
     let autoData = '';
-  		this.service.httpGetNoAuth(url,autoData).subscribe(data =>{
-          console.log(data);
+    this.service.httpGetNoAuth(url, autoData).subscribe(data => {
+      console.log(data);
 
-      },(error) => {
-        console.log(error)
-      });
-	}
+    }, (error) => {
+      console.log(error)
+    });
+  }
   search() {
     this.navCtrl.push(SearchPage);
   }
